@@ -2,13 +2,14 @@
 #include"Cola.h"
 #include "Lista.h"
 
-void Interfaz();
 
 int main() {
+    // Apoyo de vectores para la interfaz gráfica
+    vector<string> pestañas;
 	Pila Historial_de_navegacion;
 	Cola Descargas;
     Lista Pestañas_Abiertas;
-	int opc, tamano;
+    int opc, tamano, contador_pestañas = 0;
 	string nombreArchivo, tipoArchivo, nueva_pagina, pagina_anterior, pagina_actual;
 	//'pagina_actual' se tiene que ir actualizando conforme el usuario se vaya moviendo entre páginas
 	Archivo Datos;
@@ -16,11 +17,29 @@ int main() {
 	cout << "----------BIENVENIDO AL SISTEMA DE NAVEGACIÓN WEB, STELLA----------" << endl;
 	do
 	{
+        // INICIO CÓDIGO INTERFAZ GRÁFICA
+        
+        cout << endl;
+        cout << "-- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --"<<endl;
+        for (int i = 0; i < contador_pestañas; i++) {
+            if (pestañas[i] == pagina_actual) {
+                cout << "^" <<pestañas[i] << "^" << "|";
+            }
+            else{
+                cout << pestañas[i] << "|";
+            }
+            // Los "^^" al lado de cada URL indican que es la pestaña actual
+        }
+        cout << endl;
+        cout << "-- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --"<<endl;
+
+        // FIN CÓDIGO INTERFAZ GRÁFICA
+        
 		cout << endl;
 		cout << "¿Qué desea hacer?" << endl;
 		cout << endl;
 		cout << "1. Visitar nueva página \n2. Retroceder en el historial\n3. Ver historial de búsqueda completo\n4. Ver pestaña actual";
-		cout << "\n5. Abrir pestaña\n6. Cerrar pestaña\n7. Ver todas las pestañas abiertas\n8. Agregar una decarga\n9. Iniciar descarga\n10. Mostrar Descargas pendientes\n11. Salir " << endl;
+		cout << "\n5. Abrir pestaña\n6. Cerrar pestaña\n7. Ver todas las pestañas abiertas\n8. Agregar una decarga\n9. Iniciar descarga\n10. Mostrar Descargas pendientes\n11. Cambiar de pestaña\n12. Salir " << endl;
         cout << "\nOpción seleccionada: ";
 		cin >> opc;
 		if (cin.fail())
@@ -39,6 +58,10 @@ int main() {
                 Historial_de_navegacion.insertar(nueva_pagina);
                 pagina_actual = nueva_pagina;
                 Pestañas_Abiertas.Insertar(nueva_pagina);
+                contador_pestañas++;
+                
+                pestañas.push_back(nueva_pagina);
+                
                 break;
             }
 		case 2:
@@ -77,6 +100,10 @@ int main() {
                 Pestañas_Abiertas.Insertar(url_agr);
                 Historial_de_navegacion.insertar(url_agr); // la página que se acaba de abrir se agrega al historialn de navegación
                 pagina_actual = url_agr;
+                contador_pestañas++;
+                
+                pestañas.push_back(url_agr);
+                
                 break;
             }
 		case 6:
@@ -94,6 +121,15 @@ int main() {
                 }
                 else if (respuesta_cierre == 0){
                     cout << "\nLa pestaña con el URL '" << pestaña_cerrar <<"' ha sido cerrada exitosamente" << endl;
+                    
+                    for (int i = 0; i < contador_pestañas; i++) {
+                        if (pestaña_cerrar == pestañas[i]) {
+                            pestañas.erase(pestañas.begin()+i);
+                            break;
+                        }
+                    }
+                    
+                    contador_pestañas--;
                 }
                 break;
             }
@@ -141,7 +177,22 @@ int main() {
                 Descargas.Mostrar();
                 break;
             }
-		case 11:
+        case 11:
+            {
+                string url_move;
+                cout << "\nEscriba el URL de la página a la que desea moverse: ";
+                cin >> url_move;
+                for (int i = 0; i < contador_pestañas; i++) {
+                    if(pestañas[i] == url_move){
+                        pagina_actual = url_move;
+                    }
+                    else{
+                        cout << "\nLa página '" << url_move << "' no está abierta en este momento" << endl;
+                    }
+                }
+                break;
+            }
+		case 12:
             {
                 cout << "----------SALIENDO DEL SISTEMA DE NAVEGACIÓN WEB, STELLA-----------" << endl;
                 break;
@@ -153,11 +204,6 @@ int main() {
                 break;
             }
 		}
-	} while (opc != 11);
+	} while (opc != 12);
 	return 0;
-}
-
-
-void Interfaz(){
-    
 }
