@@ -1,0 +1,5 @@
+﻿  Pestana.cpp
+  Source.cpp
+C:\Users\escue\OneDrive\Escritorio\Navegador\Navegador\Source.cpp(37,29): warning C4566: el carácter representado por el nombre de carácter universal '\u2193' no se puede representar en la página de códigos actual (1252)
+  Generando código...
+  Navegador.vcxproj -> C:\Users\escue\OneDrive\Escritorio\Navegador\x64\Debug\Navegador.exe
