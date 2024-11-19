@@ -8,13 +8,9 @@
 #pragma once
 #include <iostream>
 using namespace std;
-
 class Contenido{
 public:
     Contenido();
-    void Insertar_Titulo();
-    void Insertar_Contenido();
-    void Cargar_Paginas();
 private:
-    string title, content;
+    string cuerpo;
 };

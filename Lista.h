@@ -1,25 +1,27 @@
-//
-//  Lista.hpp
-//  Sistema de Gestión de Navegación Web
-//
-//  Created by Santiago Bañuelos on 18/11/24.
-//
-
 #pragma once
+#include <string>
+#include <iostream>
+#include "Pila.h"
 
-struct Pagina{
+using namespace std;
+
+struct Pestana {
     string url;
-    Pagina* sig;
+    Pestana* sig;
+    Pila historial_pestana;
 };
 
-class Lista{
+class Lista {
 public:
     Lista();
-    void Insertar(string url_ins);
+    void Insertar(string &url_ins, string &pag_visita);
     int Extraer(string url_ext);
     void Mostrar();
+    Pestana* Buscar(string url_bus);
 private:
-    Pagina* cabecera;
-    Pagina* fin;
-    Pagina* actual;
+    Pestana* cabecera;
+    Pestana* fin;
+    Pestana* actual;
+    Pestana editable;
 };
+

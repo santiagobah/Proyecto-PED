@@ -6,17 +6,3 @@
 //
 
 #include "Pag_Web.hpp"
-Contenido::Contenido(){
-    
-}
-void Contenido::Insertar_Titulo(){
-    
-}
-
-void Contenido::Insertar_Contenido(){
-    
-}
-
-void Contenido::Cargar_Paginas(){
-    
-}

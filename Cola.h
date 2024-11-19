@@ -2,20 +2,17 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
 struct Archivo
 {
 	string nombre;
 	string tipo;
 	int tamano;
 };
-
-struct Archivos 
+struct Archivos
 {
 	Archivo datos;
 	Archivos* siguiente;
 };
-
 class Cola
 {
 public:
@@ -27,4 +24,3 @@ private:
 	Archivos* principio, * final, * nodo;
 	int contador;
 };
-
