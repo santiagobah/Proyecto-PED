@@ -1,4 +1,4 @@
-Sistema de Navegación Web Stella
+# Sistema de Navegación Web Stella
 
 ## Este programa simula un sistema básico de navegación web con funcionalidades como apertura y cierre de pestañas, navegación entre páginas, gestión de historial, y manejo de descargas. A continuación, se explicará en detalle el propósito, estructura y funcionamiento de cada componente del programa:
 
