@@ -161,10 +161,8 @@ int main() {
             
             // Generador nombres de cada pestaña:
             name_tab = "Tab" + to_string(cant_tabs+1);
-            //
             
             Pestañas_Abiertas.Insertar(name_tab, url_agr);
-            //Historial_de_navegacion.insertar(url_agr); // la página que se acaba de abrir se agrega al historialn de navegación
             Historial_de_navegacion.insertar(url_agr);
             
             
@@ -190,7 +188,7 @@ int main() {
             else{
                 comp_pes_cerr = "Tab" + pestaña_cerrar;
                 
-                respuesta_cierre = Pestañas_Abiertas.Extraer(name_tab);
+                respuesta_cierre = Pestañas_Abiertas.Extraer(comp_pes_cerr);
                 
                 if (respuesta_cierre == -1) {
                     cout << "\nActualmente no hay pestañas abiertas" << endl;
