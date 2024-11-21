@@ -1,7 +1,6 @@
 #include "Pila.h"
 #include"Cola.h"
 #include "Lista.h"
-#include "Pag_Web.h"
 #include <vector>
 
 int main() {
@@ -11,8 +10,6 @@ int main() {
     // Apoyo de vectores para la interfaz gráfica
     vector <string> pestañas;
     vector <string> descargas;
-    vector <string> historial;
-    vector<Contenido> sitios;
     Pila Historial_de_navegacion;
     Cola Descargas;
     Lista Pestañas_Abiertas;
